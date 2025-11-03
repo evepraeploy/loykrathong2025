@@ -2,11 +2,11 @@
   "name": "loykrathong-api-2025",
   "version": "1.0.0",
   "description": "Loy Krathong API - Express.js version for Vercel",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'No build step required'"
   },
   "keywords": [
     "loykrathong",
