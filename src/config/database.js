@@ -1,6 +1,8 @@
 const { Sequelize } = require("sequelize");
 const config = require("./config");
 
+let sequelize;
+
 const buildSequelizeInstance = () => {
   const baseOptions = {
     dialect: config.db.dialect,
@@ -18,7 +20,6 @@ const buildSequelizeInstance = () => {
     },
   };
 
-  // Override SSL settings if explicitly configured
   if (process.env.DB_SSL_REJECT_UNAUTHORIZED === "true") {
     baseOptions.dialectOptions.ssl.rejectUnauthorized = true;
   }
@@ -34,10 +35,9 @@ const buildSequelizeInstance = () => {
   });
 };
 
-const sequelize = buildSequelizeInstance();
-
 const connectDatabase = async () => {
   try {
+    sequelize = buildSequelizeInstance();
     await sequelize.authenticate();
     console.log("Database connection established successfully");
     return sequelize;
@@ -47,4 +47,7 @@ const connectDatabase = async () => {
   }
 };
 
-module.exports = { sequelize, connectDatabase };
+module.exports = {
+  connectDatabase,
+  getSequelize: () => sequelize,
+};
