@@ -1,0 +1,61 @@
+{
+  "info": {
+    "name": "Loy Krathong API 2025",
+    "description": "API endpoints for Loy Krathong festival",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "Get Krathongs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/krathong",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "krathong"]
+        }
+      }
+    },
+    {
+      "name": "Create Krathong",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"krathong_type\": 1,\n  \"emp_name\": \"John Doe\",\n  \"emp_department\": \"Engineering\",\n  \"emp_wish\": \"May all wishes come true\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/krathong",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "krathong"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}
